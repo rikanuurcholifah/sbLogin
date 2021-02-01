@@ -15,7 +15,7 @@
                                 <div class="text-center">
                                     <h1 class="h4 text-gray-900 mb-4">Login</h1>
                                 </div>
-                                <form class="user">
+                                <form class="user" method="post" action="<?= base_url('auth/login'); ?>">
                                     <div class="form-group">
                                         <input type="text" class="form-control form-control-user" id="email" name="email" placeholder="Enter Email Address...">
                                     </div>
@@ -30,10 +30,10 @@
                                 </form>
                                 <hr>
                                 <div class="text-center">
-                                    <a class="small" href="forgot-password.html">Forgot Password?</a>
+                                    <a class="small" href="forgot-password.html">Lupa Password?</a>
                                 </div>
                                 <div class="text-center">
-                                    <a class="small" href="<?= base_url(); ?>auth/regis">Create an Account!</a>
+                                    <a class="small" href="<?= base_url(); ?>auth/regis">Buat Akun</a>
                                 </div>
                             </div>
                         </div>
