@@ -17,11 +17,11 @@
             <!-- <?= form_error('menu', '<div class="alert alert-danger" role="alert">Menu Tidak ditambahkan</div>'); ?> -->
 
             <?= $this->session->flashdata('message'); ?>
-            <a href="" class="btn btn-primary mb-3" data-toggle="modal" data-target="#newSubMenuModal">Add New Sub Menu</a>
+            <a href="" class="btn btn-info mb-3" data-toggle="modal" data-target="#newSubMenuModal">Add New Sub Menu</a>
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th scope="col">#</th>
+                        <th scope="col"></th>
                         <th scope="col">Title</th>
                         <th scope="col">Menu</th>
                         <th scope="col">Url</th>
@@ -34,7 +34,7 @@
                     <?php $i = 1; ?>
                     <?php foreach ($subMenu as $sm) : ?>
                         <tr>
-                            <th scope="row"><?= $i; ?></th>
+                            <th scope="row"><?= $i++; ?></th>
                             <td><?= $sm['title']; ?></td>
                             <td><?= $sm['menu']; ?></td>
                             <td><?= $sm['url']; ?></td>
@@ -45,7 +45,6 @@
                                 <a href="#" class="badge badge-danger">Delete</a>
                             </td>
                         </tr>
-                        <?= $i++; ?>
                     <?php endforeach; ?>
                 </tbody>
             </table>
@@ -102,7 +101,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Add</button>
+                    <button type="submit" class="btn btn-info">Add</button>
                 </div>
             </form>
         </div>
