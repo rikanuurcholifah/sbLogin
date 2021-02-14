@@ -17,6 +17,13 @@
 
     <!-- Custom styles for this template-->
     <link href="<?= base_url('assets/'); ?>css/sb-admin-2.min.css" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="<?= base_url(); ?>vendor/leafleat/leaflet.css" />
+    <script src="<?= base_url(); ?>vendor/leafleat/leaflet.js"></script> -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
+
+
 
 </head>
 
