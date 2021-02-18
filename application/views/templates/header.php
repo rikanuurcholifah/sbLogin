@@ -21,7 +21,7 @@
     <script src="<?= base_url(); ?>vendor/leafleat/leaflet.js"></script> -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 
 
 
