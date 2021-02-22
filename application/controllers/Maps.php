@@ -96,4 +96,64 @@ class Maps extends CI_Controller
             redirect('maps/input');
         }
     }
+
+    public function edit($id_penyedia)
+    {
+        $this->form_validation->set_rules('nama_produk', 'Nama Produk', 'trim|required', array(
+            'required' => '%s Harus Diisi'
+        ));
+        $this->form_validation->set_rules('alamat', 'Alamat', 'trim|required', array(
+            'required' => '%s Harus Diisi'
+        ));
+        $this->form_validation->set_rules('nama_penyedia', 'Nama Penyedia', 'trim|required', array(
+            'required' => '%s Harus Diisi'
+        ));
+        $this->form_validation->set_rules('latitude', 'Latitude', 'trim|required', array(
+            'required' => '%s Harus Diisi'
+        ));
+        $this->form_validation->set_rules('longitude', 'Longitude', 'trim|required', array(
+            'required' => '%s Harus Diisi'
+        ));
+        $this->form_validation->set_rules('ket', 'Keterangan', 'trim|required', array(
+            'required' => '%s Harus Diisi'
+        ));
+        if ($this->form_validation->run() == FALSE) {
+            $data = array(
+                'title' => 'Edit Penyedia Reklame',
+                'user' => $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array(),
+                'maps' => $this->maps_model->detail($id_penyedia),
+                'isi' => 'editpenyedia'
+
+            );
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar', $data);
+            $this->load->view('templates/topbar', $data);
+            $this->load->view('maps/editpenyedia', $data);
+            $this->load->view('templates/footer');
+        } else {
+            $data = array(
+                'id_penyedia' => $id_penyedia,
+                'nama_produk' => $this->input->post('nama_produk'),
+                'alamat' => $this->input->post('alamat'),
+                'nama_penyedia' => $this->input->post('nama_penyedia'),
+                'latitude' => $this->input->post('latitude'),
+                'longitude' => $this->input->post('longitude'),
+                'ket' => $this->input->post('ket'),
+            );
+            $this->maps_model->edit($data);
+
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+            Data Berhasil Diedit</div>');
+            redirect('maps/data');
+        }
+    }
+
+    public function hapus($id_penyedia)
+    {
+        $data = array('id_penyedia' => $id_penyedia);
+        $this->maps_model->hapus($data);
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+        Data Berhasil Dihapus</div>');
+        redirect('maps/data');
+    }
 }
