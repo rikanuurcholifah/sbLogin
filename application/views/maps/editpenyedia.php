@@ -30,7 +30,9 @@
             <div class="card-body">
                 <?= $this->session->flashdata('message'); ?>
                 <?php
-
+                if (isset($error_upload)) {
+                    echo '<div class="alert alert-primary" role="alert">' . $error_upload . '</div>';
+                }
                 // echo validation_errors('<div class="alert alert-primary" role="alert">
                 // ', '</div>');
                 //Data berhasil disimpan
@@ -42,7 +44,7 @@
                 // $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
                 // Data Berhasil ditambah</div>');
                 // //     redirect('maps/input');
-                echo form_open('maps/edit/' . $maps->id_penyedia);
+                echo form_open_multipart('maps/edit/' . $maps->id_penyedia);
 
                 ?>
 
@@ -75,6 +77,14 @@
                     <div class="mb-3">
                         <label>Keterangan</label>
                         <input name="ket" class="form-control" id="ket" value="<?= $maps->ket; ?>" placeholder="Keterangan">
+                        <?= form_error('ket', '<small class="text-danger pl-3">', '</small>'); ?>
+                    </div>
+                    <label>Gambar</label>
+                    </br>
+                    <img src="<?= base_url('img/' . $maps->img); ?>" width="100px" alt="">
+                    <div class="mb-3">
+
+                        <input type="file" name="img" class="form-control" id="img">
                         <?= form_error('ket', '<small class="text-danger pl-3">', '</small>'); ?>
                     </div>
 

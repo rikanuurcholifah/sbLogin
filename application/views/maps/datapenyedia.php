@@ -25,6 +25,7 @@
                         <th>Latitude</th>
                         <th>Longitude</th>
                         <th>Keterangan</th>
+                        <th>Gambar</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -39,6 +40,7 @@
                             <td><?= $value->latitude ?></td>
                             <td><?= $value->longitude ?></td>
                             <td><?= $value->ket ?></td>
+                            <td><img src="<?= base_url('img/' . $value->img); ?>" width="100px" alt=""></td>
                             <td>
                                 <a href="<?= base_url('maps/edit/' . $value->id_penyedia); ?>" class="btn btn-warning">Edit</a>
                                 <a href="<?= base_url('maps/hapus/' . $value->id_penyedia); ?>" class="btn btn-danger" onclick="return confirm('Apakah data akan dihapus?')">Hapus</a>

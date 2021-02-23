@@ -43,12 +43,23 @@
                             // var lokasi1 = L.marker([-6.35163272479026, 108.32309353901088], {
                             //     icon: icon1
                             // }).bindPopup("<b>Ini Masjid</b><br>Islamic Center").addTo(map).openPopup();
+                            <?php foreach ($maps as $key => $value) { ?>
+                                L.marker([<?= $value->latitude; ?>, <?= $value->longitude; ?>]).addTo(map)
+                                    .bindPopup("<img src='<?= base_url('img/' . $value->img) ?>' width='100%'>" +
+                                        "<b>Nama Produk : <?= $value->nama_produk; ?></b><br>" +
+                                        "Alamat : <?= $value->alamat; ?></br>" +
+                                        "Nama Penyedia : <?= $value->nama_penyedia; ?></br>" +
+                                        "Keterangan : <?= $value->ket; ?></br>" +
+                                        "<a href='<?= base_url('home/detail/' . $value->id_penyedia); ?>' class='btn btn-default'>Detail</a>"
+                                    );
+                            <?php } ?>
 
-                            var lokasi1 = L.marker([-6.35163272479026, 108.32309353901088]).bindPopup("<b>Ini Masjid</b><br>Islamic Center").addTo(map).openPopup();
-                            var lokasi2 = L.marker([-6.352374647297848, 108.32500589668287]).addTo(map);
-                            var lokasi3 = L.marker([-6.510703021443245, 108.33637207691352]).addTo(map);
-                            var lokasi4 = L.marker([-6.408229942560945, 108.28146682340349]).addTo(map);
-                            var lokasi5 = L.marker([-6.3228013306134505, 108.32108603292566]).addTo(map);
+
+                            // var lokasi1 = L.marker([-6.35163272479026, 108.32309353901088]).bindPopup("<b>Ini Masjid</b><br>Islamic Center").addTo(map).openPopup();
+                            // var lokasi2 = L.marker([-6.352374647297848, 108.32500589668287]).addTo(map);
+                            // var lokasi3 = L.marker([-6.510703021443245, 108.33637207691352]).addTo(map);
+                            // var lokasi4 = L.marker([-6.408229942560945, 108.28146682340349]).addTo(map);
+                            // var lokasi5 = L.marker([-6.3228013306134505, 108.32108603292566]).addTo(map);
                         </script>
                     </div>
                 </div>

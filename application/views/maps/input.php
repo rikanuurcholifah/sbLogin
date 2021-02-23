@@ -28,8 +28,12 @@
             </div>
             <!-- Card Body -->
             <div class="card-body">
+
                 <?= $this->session->flashdata('message'); ?>
                 <?php
+                if (isset($error_upload)) {
+                    echo '<div class="alert alert-primary" role="alert">' . $error_upload . '</div>';
+                }
 
                 // echo validation_errors('<div class="alert alert-primary" role="alert">
                 // ', '</div>');
@@ -42,7 +46,8 @@
                 // $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
                 // Data Berhasil ditambah</div>');
                 // //     redirect('maps/input');
-                echo form_open('maps/input');
+                // echo form_open('maps/input');
+                echo form_open_multipart('maps/input');
 
                 ?>
 
@@ -76,6 +81,11 @@
                         <label>Keterangan</label>
                         <input name="ket" class="form-control" id="ket" value="<?= set_value('ket'); ?>" placeholder="Keterangan">
                         <?= form_error('ket', '<small class="text-danger pl-3">', '</small>'); ?>
+                    </div>
+                    <div class="mb-3">
+                        <label>Gambar</label>
+                        <input name="img" class="form-control" id="img" type="file" required>
+                        <?= form_error('img', '<small class="text-danger pl-3">', '</small>'); ?>
                     </div>
 
                     <button type="submit" class="btn btn-primary">Simpan</button>
